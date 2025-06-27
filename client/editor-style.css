@@ -1,0 +1,139 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    padding-bottom: 40px;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.left-panel {
+    width: 60%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-panel {
+    width: 40%;
+    padding: 20px;
+    background: #fff;
+    border-left: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-container, .output-container {
+    margin-bottom: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+#code-editor, #outputContainer {
+    width: 100%;
+    flex-grow: 1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+    background: #fff;
+}
+
+#code-editor {
+    background: #2d2d2d;
+    color: #f8f8f2;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#languageDropdown {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+#copyButton {
+    padding: 10px 20px;
+    border: none;
+    background: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#copyButton:hover {
+    background: #0056b3;
+}
+
+.chat-box, .participants-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.participants-box {
+    margin-bottom: 20px;
+}
+
+#participants-list {
+    list-style: none;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+#messages {
+    flex-grow: 1;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    overflow-y: auto;
+    height: 200px; /* or other fixed height */
+}
+
+.chat-input {
+    display: flex;
+}
+
+#message {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+}
+
+#sendBtn {
+    padding: 8px 15px;
+    border: none;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+} 

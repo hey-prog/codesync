@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeSync</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="new-style.css">
+</head>
+
+<body>
+
+  <header class="container">
+    <div class="logo">CodeSync</div>
+    <nav>
+      <a href="https://practice.geeksforgeeks.org/" target="_blank" rel="noopener">Practice</a>
+      <a href="https://www.geeksforgeeks.org/data-structures/" target="_blank" rel="noopener">Resources</a>
+      <a href="https://www.geeksforgeeks.org/interview-experiences/" target="_blank" rel="noopener">Companies</a>
+      <a href="https://auth.geeksforgeeks.org/" target="_blank" rel="noopener">Sign Up</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Code, Compile, Collaborate</h1>
+        <p>A platform for real-time collaborative coding. Create rooms, invite your friends, and code together.</p>
+        <a href="#" class="cta-button" id="myButton">Start Collaboration</a>
+      </div>
+    </section>
+
+    <section class="features container">
+      <div class="feature">
+        <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=400&q=80" alt="Interview" class="feature-icon">
+        <h3>Interview Candidates</h3>
+        <p>Present candidates with a problem and observe their coding process in real-time. Execute code to verify solutions.</p>
+      </div>
+      <div class="feature">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Collaboration" class="feature-icon">
+        <h3>Code With Peers</h3>
+        <p>Pair program with teammates and debug issues together, making remote collaboration seamless and efficient.</p>
+      </div>
+      <div class="feature">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Learning" class="feature-icon">
+        <h3>Teach & Learn</h3>
+        <p>Share a document with students for interactive, hands-on learning. Teach coding by doing, not just watching.</p>
+      </div>
+    </section>
+
+    <section class="languages">
+      <div class="container">
+        <h2>Supported Languages</h2>
+        <div class="logos">
+          <img src="https://d2yjqys1j7uhg1.cloudfront.net/images/language-icons/logos/c.svg" alt="C">
+          <img src="https://d2yjqys1j7uhg1.cloudfront.net/images/language-icons/logos/cpp.svg" alt="C++">
+          <img src="https://d2yjqys1j7uhg1.cloudfront.net/images/language-icons/logos/java.svg" alt="Java">
+          <img src="https://d2yjqys1j7uhg1.cloudfront.net/images/language-icons/logos/python-2.svg" alt="Python">
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 CodeSync. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <div id="signInPopup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <h2>Join a Room</h2>
+      <form id="loginForm">
+        <input type="text" id="roomId" name="roomId" placeholder="Enter Room ID" required>
+        <a href="#" id="generateRoomId" onclick="generateRoomId()">Generate Room ID</a>
+        <button type="submit">Join</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="client.js"></script>
+  <script>
+    document.getElementById('myButton').addEventListener('click', openPopup);
+
+    function openPopup() {
+      document.getElementById('signInPopup').style.display = 'flex';
+    }
+
+    function closePopup() {
+      document.getElementById('signInPopup').style.display = 'none';
+    }
+
+    function generateRoomId() {
+      let randomRoomId = Math.floor(10000 + Math.random() * 90000);
+      document.getElementById("roomId").value = randomRoomId;
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      let roomId = document.getElementById("roomId").value;
+      if(roomId) {
+        window.location.href = `${roomId}`;
+      }
+    });
+  </script>
+
+</body>
+</html>
