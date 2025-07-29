@@ -8,10 +8,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const codeEditor = document.getElementById("code-editor");
   let languageId;
 
-  const userName = prompt("Enter your name:");
-  const roomId = window.location.pathname.substring(1);  // assuming room ID is part of the URL path
+  // Get credentials from sessionStorage
+  const userName = sessionStorage.getItem('displayName');
+  const roomId = sessionStorage.getItem('roomId');
+  const secretKey = sessionStorage.getItem('secretKey');
+  const currentUser = sessionStorage.getItem('currentUser');
 
-  socket.emit("joinRoom", roomId, userName);
+  // Redirect to home if not authenticated
+  if (!userName || !roomId || !secretKey || !currentUser) {
+    window.location.href = '/';
+    return;
+  }
+
+  socket.emit("joinRoom", roomId, userName, secretKey);
+
+  // Handle room errors
+  socket.on("roomError", (error) => {
+    alert(error);
+    window.location.href = '/';
+  });
 
   socket.on("updateParticipants", (participants) => {
     const participantsListElement = document.getElementById("participants-list");
@@ -20,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     participants.forEach((participant) => {
       const listItem = document.createElement("li");
       listItem.textContent = participant.name;
+      listItem.className = "participant-item";
       participantsListElement.appendChild(listItem);
     });
   });
@@ -44,14 +60,23 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function executeCode(codeText) {
+    if (!codeText.trim()) {
+      updateOutput("Please enter some code to execute.");
+      return;
+    }
+
+    updateOutput("Executing code...");
+
     getOutputToken(codeText)
       .then((token) => makeSecondRequest(token))
       .then((response) => {
-        const stdout = response.submissions[0].stdout;
+        const submission = response.submissions[0];
+        const stdout = submission.stdout || submission.stderr || "No output";
         updateOutput(stdout);
       })
       .catch((error) => {
         console.error("Error in executeCode:", error);
+        updateOutput("Error executing code. Please try again.");
       });
   }
 

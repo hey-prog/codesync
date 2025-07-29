@@ -4,107 +4,372 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodeSync</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <title>CodeSync - Collaborative Coding Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="new-style.css">
 </head>
 
 <body>
-
-  <header class="container">
-    <div class="logo">CodeSync</div>
-    <nav>
-      <a href="https://practice.geeksforgeeks.org/" target="_blank" rel="noopener">Practice</a>
-      <a href="https://www.geeksforgeeks.org/data-structures/" target="_blank" rel="noopener">Resources</a>
-      <a href="https://www.geeksforgeeks.org/interview-experiences/" target="_blank" rel="noopener">Companies</a>
-      <a href="https://auth.geeksforgeeks.org/" target="_blank" rel="noopener">Sign Up</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h1>Code, Compile, Collaborate</h1>
-        <p>A platform for real-time collaborative coding. Create rooms, invite your friends, and code together.</p>
-        <a href="#" class="cta-button" id="myButton">Start Collaboration</a>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <i class="fas fa-code"></i>
+        <span>CodeSync</span>
       </div>
-    </section>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#languages">Languages</a>
+        <a href="#about">About</a>
+        <button class="login-btn" onclick="openLoginModal()">
+          <i class="fas fa-sign-in-alt"></i>
+          Login
+        </button>
+      </div>
+    </div>
+  </nav>
 
-    <section class="features container">
-      <div class="feature">
-        <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=400&q=80" alt="Interview" class="feature-icon">
-        <h3>Interview Candidates</h3>
-        <p>Present candidates with a problem and observe their coding process in real-time. Execute code to verify solutions.</p>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-background">
+      <div class="code-animation">
+        <div class="code-line"></div>
+        <div class="code-line"></div>
+        <div class="code-line"></div>
+        <div class="code-line"></div>
       </div>
-      <div class="feature">
-        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Collaboration" class="feature-icon">
-        <h3>Code With Peers</h3>
-        <p>Pair program with teammates and debug issues together, making remote collaboration seamless and efficient.</p>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Code Together,
+        <span class="gradient-text">Create Together</span>
+      </h1>
+      <p class="hero-subtitle">
+        Real-time collaborative coding platform where teams unite to build amazing software together
+      </p>
+      <div class="hero-buttons">
+        <button class="cta-primary" onclick="openLoginModal()">
+          <i class="fas fa-rocket"></i>
+          Start Coding Now
+        </button>
+        <button class="cta-secondary">
+          <i class="fas fa-play"></i>
+          Watch Demo
+        </button>
       </div>
-      <div class="feature">
-        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Learning" class="feature-icon">
-        <h3>Teach & Learn</h3>
-        <p>Share a document with students for interactive, hands-on learning. Teach coding by doing, not just watching.</p>
-      </div>
-    </section>
-
-    <section class="languages">
-      <div class="container">
-        <h2>Supported Languages</h2>
-        <div class="logos">
-          <img src="https://d2yjqys1j7uhg1.cloudfront.net/images/language-icons/logos/c.svg" alt="C">
-          <img src="https://d2yjqys1j7uhg1.cloudfront.net/images/language-icons/logos/cpp.svg" alt="C++">
-          <img src="https://d2yjqys1j7uhg1.cloudfront.net/images/language-icons/logos/java.svg" alt="Java">
-          <img src="https://d2yjqys1j7uhg1.cloudfront.net/images/language-icons/logos/python-2.svg" alt="Python">
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">10K+</span>
+          <span class="stat-label">Active Users</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">50K+</span>
+          <span class="stat-label">Code Sessions</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">99.9%</span>
+          <span class="stat-label">Uptime</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose CodeSync?</h2>
+        <p>Experience the future of collaborative development</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Real-time Collaboration</h3>
+          <p>Code together with your team in real-time. See changes instantly and work seamlessly across different time zones.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-play-circle"></i>
+          </div>
+          <h3>Instant Code Execution</h3>
+          <p>Run your code instantly with our powerful execution engine. Support for multiple programming languages.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Secure Rooms</h3>
+          <p>Private rooms with unique secret keys ensure your code stays secure and accessible only to authorized team members.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h3>Integrated Chat</h3>
+          <p>Communicate with your team without leaving the editor. Built-in chat keeps everyone on the same page.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Cross-platform</h3>
+          <p>Access your coding sessions from any device. Responsive design ensures great experience everywhere.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Lightning Fast</h3>
+          <p>Optimized for speed with minimal latency. Focus on coding, not waiting for the platform to catch up.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Languages Section -->
+  <section id="languages" class="languages-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Supported Languages</h2>
+        <p>Code in your favorite programming language</p>
+      </div>
+      <div class="languages-grid">
+        <div class="language-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
+          <span>C</span>
+        </div>
+        <div class="language-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+          <span>C++</span>
+        </div>
+        <div class="language-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+          <span>Java</span>
+        </div>
+        <div class="language-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+          <span>Python</span>
+        </div>
+        <div class="language-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+          <span>JavaScript</span>
+        </div>
+        <div class="language-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript">
+          <span>TypeScript</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2024 CodeSync. All Rights Reserved.</p>
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <i class="fas fa-code"></i>
+            <span>CodeSync</span>
+          </div>
+          <p>Empowering developers to collaborate and create amazing software together.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#languages">Languages</a>
+          <a href="#">Pricing</a>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 CodeSync. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
-  <div id="signInPopup" class="popup">
-    <div class="popup-content">
-      <span class="close" onclick="closePopup()">&times;</span>
-      <h2>Join a Room</h2>
-      <form id="loginForm">
-        <input type="text" id="roomId" name="roomId" placeholder="Enter Room ID" required>
-        <a href="#" id="generateRoomId" onclick="generateRoomId()">Generate Room ID</a>
-        <button type="submit">Join</button>
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fas fa-sign-in-alt"></i> Login to CodeSync</h2>
+        <span class="close" onclick="closeLoginModal()">&times;</span>
+      </div>
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required>
+          <div class="form-hint">Try: admin, user1, developer, or guest</div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+          <div class="form-hint">Passwords: password123, mypass456, dev789, guest123</div>
+        </div>
+        <button type="submit" class="auth-btn">
+          <i class="fas fa-sign-in-alt"></i>
+          Login
+        </button>
       </form>
+      <div id="loginError" class="error-message"></div>
+    </div>
+  </div>
+
+  <!-- Room Modal -->
+  <div id="roomModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fas fa-door-open"></i> Join Coding Room</h2>
+        <span class="close" onclick="closeRoomModal()">&times;</span>
+      </div>
+      <form id="roomForm" class="auth-form">
+        <div class="form-group">
+          <label for="roomId">Room ID</label>
+          <div class="input-group">
+            <input type="text" id="roomId" name="roomId" placeholder="Enter room ID" required>
+            <button type="button" class="generate-btn" onclick="generateRoomId()">
+              <i class="fas fa-random"></i>
+            </button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="secretKey">Room Secret Key</label>
+          <input type="password" id="secretKey" name="secretKey" placeholder="Enter secret key" required>
+          <div class="form-hint">This key is required to access the room</div>
+        </div>
+        <div class="form-group">
+          <label for="displayName">Display Name</label>
+          <input type="text" id="displayName" name="displayName" placeholder="Your name" required>
+        </div>
+        <button type="submit" class="auth-btn">
+          <i class="fas fa-rocket"></i>
+          Join Room
+        </button>
+      </form>
+      <div id="roomError" class="error-message"></div>
     </div>
   </div>
 
   <script src="client.js"></script>
   <script>
-    document.getElementById('myButton').addEventListener('click', openPopup);
+    let currentUser = null;
 
-    function openPopup() {
-      document.getElementById('signInPopup').style.display = 'flex';
+    // Login Modal Functions
+    function openLoginModal() {
+      document.getElementById('loginModal').style.display = 'flex';
     }
 
-    function closePopup() {
-      document.getElementById('signInPopup').style.display = 'none';
+    function closeLoginModal() {
+      document.getElementById('loginModal').style.display = 'none';
+      document.getElementById('loginError').textContent = '';
+    }
+
+    function openRoomModal() {
+      document.getElementById('roomModal').style.display = 'flex';
+    }
+
+    function closeRoomModal() {
+      document.getElementById('roomModal').style.display = 'none';
+      document.getElementById('roomError').textContent = '';
     }
 
     function generateRoomId() {
-      let randomRoomId = Math.floor(10000 + Math.random() * 90000);
-      document.getElementById("roomId").value = randomRoomId;
+      const roomId = Math.floor(100000 + Math.random() * 900000);
+      document.getElementById('roomId').value = roomId;
     }
 
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      let roomId = document.getElementById("roomId").value;
-      if(roomId) {
-        window.location.href = `${roomId}`;
+    // Login Form Handler
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const response = await fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          currentUser = username;
+          closeLoginModal();
+          openRoomModal();
+          document.getElementById('displayName').value = username;
+        } else {
+          document.getElementById('loginError').textContent = result.message;
+        }
+      } catch (error) {
+        document.getElementById('loginError').textContent = 'Login failed. Please try again.';
       }
     });
-  </script>
 
+    // Room Form Handler
+    document.getElementById('roomForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const roomId = document.getElementById('roomId').value;
+      const secretKey = document.getElementById('secretKey').value;
+      const displayName = document.getElementById('displayName').value;
+
+      try {
+        const response = await fetch('/api/verify-room', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ roomId, secretKey }),
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          // Store room credentials in sessionStorage
+          sessionStorage.setItem('roomId', roomId);
+          sessionStorage.setItem('secretKey', secretKey);
+          sessionStorage.setItem('displayName', displayName);
+          sessionStorage.setItem('currentUser', currentUser);
+          
+          // Redirect to room
+          window.location.href = `/${roomId}`;
+        } else {
+          document.getElementById('roomError').textContent = result.message;
+        }
+      } catch (error) {
+        document.getElementById('roomError').textContent = 'Failed to join room. Please try again.';
+      }
+    });
+
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+      const loginModal = document.getElementById('loginModal');
+      const roomModal = document.getElementById('roomModal');
+      
+      if (event.target === loginModal) {
+        closeLoginModal();
+      }
+      if (event.target === roomModal) {
+        closeRoomModal();
+      }
+    }
+  </script>
 </body>
 </html>

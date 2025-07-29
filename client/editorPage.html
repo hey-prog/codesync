@@ -5,47 +5,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CodeSync - Editor</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="editor-style.css">
 </head>
 
 <body>
-
-  <!-- <h1>Editor Room</h1> -->
   <div class="container">
     <div class="left-panel">
       <div class="editor-container">
+        <div class="section-header">
+          <h2><i class="fas fa-code"></i> Code Editor</h2>
+        </div>
         <div class="controls">
-          <div>
+          <div class="language-select">
             <label for="languageDropdown">Language:</label>
             <select id="languageDropdown">
               <option value="1">C</option>
               <option value="2">C++</option>
               <option value="4">Java</option>
               <option value="28">Python</option>
+              <option value="63">JavaScript</option>
             </select>
           </div>
-          <button id="copyButton">Execute Code</button>
+          <button id="copyButton">
+            <i class="fas fa-play"></i>
+            Execute Code
+          </button>
         </div>
         <textarea id="code-editor" placeholder="Type your code here..."></textarea>
       </div>
       <div class="output-container">
-        <h2>Output</h2>
-        <div id="outputContainer"></div>
+        <div class="section-header">
+          <h2><i class="fas fa-terminal"></i> Output</h2>
+        </div>
+        <div id="outputContainer">Ready to execute code...</div>
       </div>
     </div>
 
     <div class="right-panel">
       <div class="participants-box">
-        <h2>Participants</h2>
-        <ul id="participants-list"></ul>
+        <div class="section-header">
+          <h2><i class="fas fa-users"></i> Participants</h2>
+        </div>
+        <div class="participants-content">
+          <ul id="participants-list"></ul>
+        </div>
       </div>
       <div class="chat-box">
-        <h2>Chat</h2>
-        <div id="messages"></div>
+        <div class="section-header">
+          <h2><i class="fas fa-comments"></i> Chat</h2>
+        </div>
+        <div class="chat-content">
+          <div id="messages"></div>
+        </div>
         <div class="chat-input">
           <input type="text" id="message" placeholder="Enter Message" />
-          <button id="sendBtn">Send</button>
+          <button id="sendBtn">
+            <i class="fas fa-paper-plane"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -61,9 +80,11 @@
     const allmessages = document.getElementById("messages");
 
     socket.on("message", (message) => {
-      const p = document.createElement('p');
-      p.innerText = message;
-      allmessages.appendChild(p);
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'message';
+      messageDiv.innerText = message;
+      allmessages.appendChild(messageDiv);
+      allmessages.scrollTop = allmessages.scrollHeight;
     });
 
     if (sendBtn) {
@@ -72,6 +93,16 @@
         if (message) {
           socket.emit("user-message", message);
           messageInput.value = "";
+        }
+      });
+
+      messageInput.addEventListener('keypress', e => {
+        if (e.key === 'Enter') {
+          const message = messageInput.value;
+          if (message) {
+            socket.emit("user-message", message);
+            messageInput.value = "";
+          }
         }
       });
     }

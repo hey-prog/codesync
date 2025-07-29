@@ -12,12 +12,49 @@ const participants = {};
 const roomSocketMap = {};
 const roomParticipantsMap = {};
 
+// Hardcoded credentials for demo
+const users = {
+  "admin": "password123",
+  "user1": "mypass456",
+  "developer": "dev789",
+  "guest": "guest123"
+};
+
+// Room secret keys - in production, these would be stored in a database
+const roomSecrets = {};
+
 app.use(express.static(path.join(__dirname, "client")));
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "index.html"));
 });
 
+// Authentication endpoint
+app.post("/api/login", (req, res) => {
+  const { username, password } = req.body;
+  
+  if (users[username] && users[username] === password) {
+    res.json({ success: true, message: "Login successful" });
+  } else {
+    res.json({ success: false, message: "Invalid credentials" });
+  }
+});
+
+// Room secret verification endpoint
+app.post("/api/verify-room", (req, res) => {
+  const { roomId, secretKey } = req.body;
+  
+  // If room doesn't exist, create it with the provided secret
+  if (!roomSecrets[roomId]) {
+    roomSecrets[roomId] = secretKey;
+    res.json({ success: true, message: "Room created successfully", isCreator: true });
+  } else if (roomSecrets[roomId] === secretKey) {
+    res.json({ success: true, message: "Room access granted", isCreator: false });
+  } else {
+    res.json({ success: false, message: "Invalid secret key for this room" });
+  }
+});
 app.get("/:roomId", (req, res) => {
   const roomId = req.params.roomId;
   res.sendFile(path.join(__dirname, "client", "editorPage.html"));
@@ -31,7 +68,13 @@ io.on("connection", (socket) => {
     io.emit("message",message);
   })
 
-  socket.on("joinRoom", (roomId, userName) => {
+  socket.on("joinRoom", (roomId, userName, secretKey) => {
+    // Verify room secret before allowing join
+    if (!roomSecrets[roomId] || roomSecrets[roomId] !== secretKey) {
+      socket.emit("roomError", "Invalid secret key for this room");
+      return;
+    }
+
     socket.join(roomId);
 
     if (!roomParticipantsMap[roomId]) {
