@@ -7,210 +7,195 @@
   <title>CodeSync - Collaborative Coding Platform</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="new-style.css">
+  <style>
+    /* Simple, clean styles for the landing page */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 600px;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      background: white;
+      color: #667eea;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      color: #333;
+    }
+
+    .modal h2 {
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .auth-btn {
+      width: 100%;
+      background: #667eea;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .auth-btn:hover {
+      background: #5a67d8;
+    }
+
+    .close {
+      float: right;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #999;
+    }
+
+    .close:hover {
+      color: #333;
+    }
+
+    .error-message {
+      color: #e53e3e;
+      margin-top: 1rem;
+      padding: 0.5rem;
+      background: #fed7d7;
+      border-radius: 4px;
+      display: none;
+    }
+
+    .error-message:not(:empty) {
+      display: block;
+    }
+
+    .form-hint {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.25rem;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .input-group input {
+      flex: 1;
+    }
+
+    .generate-btn {
+      background: #f7fafc;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      padding: 0.75rem;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .generate-btn:hover {
+      background: #edf2f7;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <i class="fas fa-code"></i>
-        <span>CodeSync</span>
-      </div>
-      <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#languages">Languages</a>
-        <a href="#about">About</a>
-        <button class="login-btn" onclick="openLoginModal()">
-          <i class="fas fa-sign-in-alt"></i>
-          Login
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-background">
-      <div class="code-animation">
-        <div class="code-line"></div>
-        <div class="code-line"></div>
-        <div class="code-line"></div>
-        <div class="code-line"></div>
-      </div>
-    </div>
-    <div class="hero-content">
-      <h1 class="hero-title">
-        Code Together,
-        <span class="gradient-text">Create Together</span>
-      </h1>
-      <p class="hero-subtitle">
-        Real-time collaborative coding platform where teams unite to build amazing software together
-      </p>
-      <div class="hero-buttons">
-        <button class="cta-primary" onclick="openLoginModal()">
-          <i class="fas fa-rocket"></i>
-          Start Coding Now
-        </button>
-        <button class="cta-secondary">
-          <i class="fas fa-play"></i>
-          Watch Demo
-        </button>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-number">10K+</span>
-          <span class="stat-label">Active Users</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">50K+</span>
-          <span class="stat-label">Code Sessions</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">99.9%</span>
-          <span class="stat-label">Uptime</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features Section -->
-  <section id="features" class="features-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Why Choose CodeSync?</h2>
-        <p>Experience the future of collaborative development</p>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-users"></i>
-          </div>
-          <h3>Real-time Collaboration</h3>
-          <p>Code together with your team in real-time. See changes instantly and work seamlessly across different time zones.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-play-circle"></i>
-          </div>
-          <h3>Instant Code Execution</h3>
-          <p>Run your code instantly with our powerful execution engine. Support for multiple programming languages.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <h3>Secure Rooms</h3>
-          <p>Private rooms with unique secret keys ensure your code stays secure and accessible only to authorized team members.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-comments"></i>
-          </div>
-          <h3>Integrated Chat</h3>
-          <p>Communicate with your team without leaving the editor. Built-in chat keeps everyone on the same page.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-mobile-alt"></i>
-          </div>
-          <h3>Cross-platform</h3>
-          <p>Access your coding sessions from any device. Responsive design ensures great experience everywhere.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-bolt"></i>
-          </div>
-          <h3>Lightning Fast</h3>
-          <p>Optimized for speed with minimal latency. Focus on coding, not waiting for the platform to catch up.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Languages Section -->
-  <section id="languages" class="languages-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Supported Languages</h2>
-        <p>Code in your favorite programming language</p>
-      </div>
-      <div class="languages-grid">
-        <div class="language-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
-          <span>C</span>
-        </div>
-        <div class="language-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
-          <span>C++</span>
-        </div>
-        <div class="language-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
-          <span>Java</span>
-        </div>
-        <div class="language-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
-          <span>Python</span>
-        </div>
-        <div class="language-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
-          <span>JavaScript</span>
-        </div>
-        <div class="language-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript">
-          <span>TypeScript</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <div class="footer-logo">
-            <i class="fas fa-code"></i>
-            <span>CodeSync</span>
-          </div>
-          <p>Empowering developers to collaborate and create amazing software together.</p>
-        </div>
-        <div class="footer-section">
-          <h4>Product</h4>
-          <a href="#features">Features</a>
-          <a href="#languages">Languages</a>
-          <a href="#">Pricing</a>
-        </div>
-        <div class="footer-section">
-          <h4>Company</h4>
-          <a href="#">About</a>
-          <a href="#">Careers</a>
-          <a href="#">Contact</a>
-        </div>
-        <div class="footer-section">
-          <h4>Connect</h4>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2024 CodeSync. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <div class="container">
+    <h1>CodeSync</h1>
+    <p>Real-time collaborative coding platform</p>
+    <button class="btn" onclick="openLoginModal()">Start Coding</button>
+  </div>
 
   <!-- Login Modal -->
   <div id="loginModal" class="modal">
     <div class="modal-content">
-      <div class="modal-header">
-        <h2><i class="fas fa-sign-in-alt"></i> Login to CodeSync</h2>
-        <span class="close" onclick="closeLoginModal()">&times;</span>
-      </div>
-      <form id="loginForm" class="auth-form">
+      <span class="close" onclick="closeLoginModal()">&times;</span>
+      <h2>Login to CodeSync</h2>
+      <form id="loginForm">
         <div class="form-group">
           <label for="username">Username</label>
           <input type="text" id="username" name="username" required>
@@ -221,10 +206,7 @@
           <input type="password" id="password" name="password" required>
           <div class="form-hint">Passwords: password123, mypass456, dev789, guest123</div>
         </div>
-        <button type="submit" class="auth-btn">
-          <i class="fas fa-sign-in-alt"></i>
-          Login
-        </button>
+        <button type="submit" class="auth-btn">Login</button>
       </form>
       <div id="loginError" class="error-message"></div>
     </div>
@@ -233,18 +215,14 @@
   <!-- Room Modal -->
   <div id="roomModal" class="modal">
     <div class="modal-content">
-      <div class="modal-header">
-        <h2><i class="fas fa-door-open"></i> Join Coding Room</h2>
-        <span class="close" onclick="closeRoomModal()">&times;</span>
-      </div>
-      <form id="roomForm" class="auth-form">
+      <span class="close" onclick="closeRoomModal()">&times;</span>
+      <h2>Join Coding Room</h2>
+      <form id="roomForm">
         <div class="form-group">
           <label for="roomId">Room ID</label>
           <div class="input-group">
             <input type="text" id="roomId" name="roomId" placeholder="Enter room ID" required>
-            <button type="button" class="generate-btn" onclick="generateRoomId()">
-              <i class="fas fa-random"></i>
-            </button>
+            <button type="button" class="generate-btn" onclick="generateRoomId()">Generate</button>
           </div>
         </div>
         <div class="form-group">
@@ -256,20 +234,16 @@
           <label for="displayName">Display Name</label>
           <input type="text" id="displayName" name="displayName" placeholder="Your name" required>
         </div>
-        <button type="submit" class="auth-btn">
-          <i class="fas fa-rocket"></i>
-          Join Room
-        </button>
+        <button type="submit" class="auth-btn">Join Room</button>
       </form>
       <div id="roomError" class="error-message"></div>
     </div>
   </div>
 
-  <script src="client.js"></script>
   <script>
     let currentUser = null;
 
-    // Login Modal Functions
+    // Modal Functions
     function openLoginModal() {
       document.getElementById('loginModal').style.display = 'flex';
     }
